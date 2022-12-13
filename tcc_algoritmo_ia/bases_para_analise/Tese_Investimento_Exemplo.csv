@@ -1,0 +1,9 @@
+Nome da empresa,Data da submissão,Data de fundação,Quantidade de funcionários,Indústria,Produto próprio?,Gerando receita?,Receita mensal (R$/mês),Número de Clientes,Clientes Recorrentes?,CAC histórico (R$),Curso Founder,Data Decisão,Investiu?
+A,12/08/2022,01/08/2022,14,Sustentável,Não,Não,0,2,Não,900,Engenharia,12/10/2022,Sim
+B,01/10/2022,01/09/2022,5,Tech,Sim,Não,0,0,Não,300,Ciência da Computação,30/10/2022,Não
+C,03/08/2022,01/02/2021,132,Finanças,Não,Sim,10000,100,Sim,500,Administração,05/10/2022,Sim
+D,05/05/2022,01/07/2021,20,Logística,Sim,Sim,20000,50,Sim,1000,Engenharia,05/07/2022,Não
+E,19/09/2022,01/09/2022,6,Finanças,Não,Sim,200,10,Não,890,Economia,19/10/2022,Não
+F,16/08/2022,01/10/2021,90,Tech,Sim,Sim,5000,1000,Sim,200,Engenharia,16/10/2022,Sim
+G,19/02/2022,01/10/2021,50,Tech,Não,Sim,40000,250,Sim,300,Engenharia,19/04/2022,Não
+H,19/09/2022,01/02/2022,27,Tech,Sim,Não,0,500,Não,500,Química,20/10/2022,Sim

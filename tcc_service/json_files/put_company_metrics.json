@@ -1,0 +1,13 @@
+{
+	"$set": 
+	{
+		"employees":
+		{
+			"background": 
+			{
+				"human": 0.76,
+				"exact": 0.8
+			}	
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"_user_name" : "jocaJ",
+	"_theory_name": "Teoria para ml",
+	"employees":
+	{
+		"quantity_employees" : 0.5,
+		"background": 
+		{
+			"human": 0.888,
+			"exact": 0.635
+		}	
+	},
+	"field":
+	{
+		"macro_area": 0.94,
+		"product": 0.754
+	}
+}

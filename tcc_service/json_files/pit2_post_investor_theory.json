@@ -1,0 +1,17 @@
+{
+	"_user_name" : "jocaJ",
+	"_theory_name": "Early stages em Educacao",
+	"employees":
+	{
+		"quantity_employees" : 0.3,
+		"background": 
+		{
+			"human": 0.781,
+			"exact": 0.74
+		}	
+	},
+	"field":
+	{
+		"macro_area": 0.97
+	}
+}
