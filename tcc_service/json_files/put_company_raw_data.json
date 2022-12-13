@@ -1,0 +1,25 @@
+{
+	"$set": 
+	{
+		"_company_id": 1,
+		"_user_name" : "jocaJ",
+		"oficial_name": "Joca Joao e-Mercado LDTA",
+		"fantasy_name" : "Galia",
+		
+		
+		"employees":
+		{
+			"quantity_employees" : 12,
+			"background": 
+			{
+				"human": ["Administracao", "Economia"],
+				"exact": ["Engenharia", "Ciencia da computacao"]
+			}	
+		},
+		"field":
+		{
+			"macro_area": "Tecnologia",
+			"product": "Apicativo de compras em mercado"
+		}
+	}
+}

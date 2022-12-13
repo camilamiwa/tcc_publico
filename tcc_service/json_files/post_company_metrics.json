@@ -1,0 +1,18 @@
+{
+	"_company_id": 1,
+	"_user_name" : "jocaJ",
+	"employees":
+	{
+		"quantity_employees" : 12,
+		"background": 
+		{
+			"human": 0.8,
+			"exact": 0.6
+		}	
+	},
+	"field":
+	{
+		"macro_area": 0.74,
+		"product": 0.911
+	}
+}
