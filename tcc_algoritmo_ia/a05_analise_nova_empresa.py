@@ -172,7 +172,7 @@ def main(GLOBAL_URL = 'http://127.0.0.1:5000/',
     historico = pd.DataFrame.from_dict(get_from_mongo.json()['historic'], orient = 'index')
     
     columns_to_remove = []
-    get_from_mongo = requests.get(GLOBAL_URL + 'investors_theory/historic_data/{}/{}'.format('dtypes', 'dtypes'))
+    get_from_mongo = requests.get(GLOBAL_URL + 'investors/dtypes')
     columns_dtypes = get_from_mongo.json()['dtypes']
     for key, value in columns_dtypes.items():
       if key in historico.columns.tolist():
@@ -197,7 +197,7 @@ def main(GLOBAL_URL = 'http://127.0.0.1:5000/',
     X_nova_empresa = pd.DataFrame.from_dict(get_from_mongo.json()['company_data'], orient = 'index')
     
     columns_to_remove = []
-    get_from_mongo = requests.get(GLOBAL_URL + 'investors_theory/historic_data/{}/{}'.format('dtypes', 'dtypes'))
+    get_from_mongo = requests.get(GLOBAL_URL + 'investors/dtypes')
     columns_dtypes = get_from_mongo.json()['dtypes']
     for key, value in columns_dtypes.items():
       if key in X_nova_empresa.columns.tolist():

@@ -102,15 +102,15 @@ if perfil == 'Investidor':
   # Cadastro inicial com informações pessoais e da tese de investimentos
   with st.form("Nos conte mais sobre você:", clear_on_submit=False):
 
-    nome = st.text_input("Nome:", placeholder="Fulano da Silva")
-    email = st.text_input("Email:", placeholder="fulano.silva@gmail.com")
-    telefone = st.text_input("Telefone:", placeholder="(__) _____-____")
-    senha = st.text_input("Senha:", placeholder="****")
+    nome = st.text_input("Nome:", value="Fulano da Silva")
+    email = st.text_input("Email:", value="fulano", placeholder="fulano.silva@gmail.com")
+    telefone = st.text_input("Telefone:", value=909, placeholder="(__) _____-____")
+    senha = st.text_input("Senha:", placeholder="****", value=11)
     
     st.write("\nAgora, sobre sua tese de investimentos:")
 
     tese = st.file_uploader('Faça upload das últimas empresas que você analisou aqui: (CSV)', type='csv')
-    nome_tese = st.text_input("Identificador (nome) da sua tese:", placeholder="Tese do Fulano")
+    nome_tese = st.text_input("Identificador (nome) da sua tese:", value='fulano', placeholder="Tese do Fulano")
 
     aceito_lgpd = st.checkbox('Concordo em compartilhar essas informações e sei que o projeto armazenará os dados de minha tese anonimizados, não sendo permitido o compartilhamento dos mesmos.')
     submit = st.form_submit_button("Começar análise")
@@ -192,7 +192,7 @@ if perfil == 'Investidor':
 elif perfil == 'Empreendedor':
 
   #Inicializando as variáveis da sessão
-  if 'investor_username' not in st.session_state:
+  if 'founder_name' not in st.session_state:
     st.session_state['founder_name'] = ''
   if 'theory_name' not in st.session_state:
     st.session_state['theory_name']  = ''

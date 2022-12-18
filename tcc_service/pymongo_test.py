@@ -30,6 +30,76 @@ def get_database(database_name):
 
 # Endpoints relacionados ao usuário
 
+@app.route('/delete_all/profile', methods=['DELETE'])
+def delete_all_user_profile():
+    profile_collection = db_users['profile']
+    profile_collection.delete_many({})
+
+@app.route('/delete_all/results', methods=['DELETE'])
+def delete_all_results():
+    results_collection = db_results['results_and_comments']
+    results_collection.delete_many({})
+
+@app.route('/delete_all/investors/data', methods=['DELETE'])
+def delete_all_investors_data():
+    investors_collection = db_investors['historic_data']
+    investors_collection.delete_many({})
+
+@app.route('/delete_all/investors/filtrado', methods=['DELETE'])
+def delete_all_investors_filtrado():
+    investors_collection = db_investors['historic_filtrado']
+    investors_collection.delete_many({})
+
+@app.route('/delete_all/investors/tratado', methods=['DELETE'])
+def delete_all_investors_tratado():
+    investors_collection = db_investors['historic_tratado']
+    investors_collection.delete_many({})
+
+@app.route('/delete_all/companies', methods=['DELETE'])
+def delete_all_companies():
+    company_collection = db_companies['raw_data']
+    company_collection.delete_many({})
+
+@app.route('/delete_all/cluster', methods=['DELETE'])
+def delete_entire_mongo():
+    profile_collection = db_users['profile']
+    profile_collection.delete_many({})
+
+    results_collection = db_results['results_and_comments']
+    results_collection.delete_many({})
+
+    investors_collection = db_investors['historic_data']
+    investors_collection.delete_many({})
+
+    investors_collection = db_investors['historic_filtrado']
+    investors_collection.delete_many({})
+
+    investors_collection = db_investors['historic_tratado']
+    investors_collection.delete_many({})
+
+    company_collection = db_companies['raw_data']
+    company_collection.delete_many({})
+    
+@app.route('/investors/dtypes', methods=['GET'])
+def get_dtypes():
+    
+    investors_collection = db_investors['dtypes']
+    
+    message = investors_collection.find_one({'id': 'dtypes_raw'})
+    return json.loads(json_util.dumps(message)), 200
+
+@app.route('/investors/dtypes', methods=['POST'])
+def create_dtypes():
+    
+    data = request.get_json()
+
+    investors_collection = db_investors['dtypes']
+    
+    message = investors_collection.insert_one(data)
+    if not message.acknowledged: return "FAILED", 400   
+    return "cool", 200
+
+
 # Método GET: para leitura de registro
 # é necessário identificar o registro procurado. Os endpoints pedem
 # pela chave de identificação. No caso do usuário 'user_name'

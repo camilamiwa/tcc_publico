@@ -31,7 +31,7 @@ def main(start_file_name = r'bases_csv\02_historico_tratado.csv',
     historico = pd.DataFrame.from_dict(get_from_mongo.json()['historic_tratado'], orient = 'index')
     
     columns_to_remove = []
-    get_from_mongo = requests.get(GLOBAL_URL + 'investors_theory/historic_data/{}/{}'.format('dtypes', 'dtypes'))
+    get_from_mongo = requests.get(GLOBAL_URL + 'investors/dtypes')
     columns_dtypes = get_from_mongo.json()['dtypes']
     for key, value in columns_dtypes.items():
       if key in historico.columns.tolist():

@@ -32,7 +32,7 @@ def main(start_file_name = r'bases_csv\01_historico_base_crua.csv',
 
     # historico = pd.read_csv(start_file_name)
 
-    get_from_mongo = requests.get(GLOBAL_URL + 'investors_theory/historic_data/{}/{}'.format('dtypes', 'dtypes'))
+    get_from_mongo = requests.get(GLOBAL_URL + 'investors/dtypes')
     columns_dtypes = get_from_mongo.json()['dtypes']
     for key, value in columns_dtypes.items():
         columns_dtypes[key] = np.dtype(value)
