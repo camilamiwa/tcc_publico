@@ -102,15 +102,15 @@ if perfil == 'Investidor':
   # Cadastro inicial com informações pessoais e da tese de investimentos
   with st.form("Nos conte mais sobre você:", clear_on_submit=False):
 
-    nome = st.text_input("Nome:", value="Fulano da Silva")
-    email = st.text_input("Email:", value="fulano", placeholder="fulano.silva@gmail.com")
-    telefone = st.text_input("Telefone:", value=909, placeholder="(__) _____-____")
-    senha = st.text_input("Senha:", placeholder="****", value=11)
+    nome = st.text_input("Nome:", placeholder="Fulano da Silva")
+    email = st.text_input("Email:", placeholder="fulano.silva@gmail.com")
+    telefone = st.text_input("Telefone:", placeholder="(__) _____-____")
+    senha = st.text_input("Senha:", placeholder="****", type='password')
     
     st.write("\nAgora, sobre sua tese de investimentos:")
 
     tese = st.file_uploader('Faça upload das últimas empresas que você analisou aqui: (CSV)', type='csv')
-    nome_tese = st.text_input("Identificador (nome) da sua tese:", value='fulano', placeholder="Tese do Fulano")
+    nome_tese = st.text_input("Identificador (nome) da sua tese:", placeholder="Tese do Fulano")
 
     aceito_lgpd = st.checkbox('Concordo em compartilhar essas informações e sei que o projeto armazenará os dados de minha tese anonimizados, não sendo permitido o compartilhamento dos mesmos.')
     submit = st.form_submit_button("Começar análise")
@@ -211,7 +211,7 @@ elif perfil == 'Empreendedor':
     qtd_funcionarios = st.number_input("Quantidade de funcionários:", min_value=1, value=1, step=1, format='%d')
     industria = st.text_input("À qual categoria sua indústria pertence?", placeholder="Fintech")
     prod_proprio = st.radio('Seu produto principal é próprio?', ['Sim', 'Não'])
-    cnpj_empresa = st.number_input("CNPJ da empresa candidata: ", min_value=1, value=1, step=1, help='Digite apenas os números!', format='%d')
+    cnpj_empresa = st.text_input("CNPJ da empresa candidata: ", placeholder = '12.345.678/0001-90', help='Digite apenas os números!')
     ger_receita = st.radio('Já está gerando receita?', ['Sim', 'Não'])
     if (ger_receita == 'Sim'):
         receita = st.number_input("Receita mensal (R$):", min_value=0, value=1, step=1, format='%d')
