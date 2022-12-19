@@ -59,10 +59,8 @@ if perfil == 'Investidor':
   # Modelo para baixar e preencher
   with col1:
     st.write("Baixe o modelo de importação dos dados! Preencha-o com as informações de todas as empresas que você já avaliou, e a decisão final!")
-    # Camila Done: GET de um modelo de tabela vazia
-
+   
     if isApiRunning:
-      # Baixando template disponível no repositório
       pandas_load = pd.read_json("investor_empty.json")
       guia_importacao = pandas_load.to_csv(index = False)
 
@@ -80,7 +78,6 @@ if perfil == 'Investidor':
   # Testes usados
   with col2:
     st.write("Caso queira entender como o sistema funciona primeiro, preparamos este conjunto de dados para você simular!")
-    # Camila Done: GET da tabela que usamos de teste
     if isApiRunning:
       pandas_load = pd.read_csv("Tese_Investimento_Exemplo.csv")
       st.write(pandas_load.head())
@@ -92,7 +89,6 @@ if perfil == 'Investidor':
                                         mime='text/csv')
     else: 
       exemplo_tese =  '''teste, oi'''
-      #st.write(exemplo_tese.head())
       baixou_modelo = st.download_button('Download exemplo', exemplo_tese, 'exemplo_tese.csv')
     if (baixou_modelo):
       st.write('Download feito! Siga adiante!')
@@ -127,16 +123,13 @@ if perfil == 'Investidor':
       "theory_name": nome_tese
     } 
 
-    # inserted = requests.post(global_url + 'profile', json = add_profile)
+    inserted = requests.post(global_url + 'profile', json = add_profile)
 
-    # st.success(f"{inserted.json()['name']}, cadastro concluído com sucesso!")
-  
     st.success(f"{nome}, cadastro concluído com sucesso!")
     tese = pd.read_csv(tese)
 
     # Iniciar EDA e descrição da tese
     st.markdown("""---""")
-    # st.subheader('Análise da tese "' + inserted.json()['theory_name'] + '":')
     st.subheader('Análise da tese "' + nome_tese + '":')
     with st.spinner('Analisando sua tese...'):
       # Rotinas: Data Augmentation; EDA
@@ -214,7 +207,7 @@ elif perfil == 'Empreendedor':
     qtd_funcionarios = st.number_input("Quantidade de funcionários:", min_value=1, value=40, step=1, format='%d')
     industria = st.text_input("À qual categoria sua indústria pertence?", placeholder="Fintech", value="Fintech")
     prod_proprio = st.radio('Seu produto principal é próprio?', ['Sim', 'Não'])
-    cnpj_empresa = st.text_input("CNPJ da empresa candidata:", placeholder = '12.345.678/0001-90', value = '12.345.678/0001-90', help='Digite apenas os números!')
+    cnpj_empresa = st.number_input("CNPJ da empresa candidata: ", min_value=1, value=12345678000190, step=1, help='Digite apenas os números!', format='%d')
     ger_receita = st.radio('Já está gerando receita?', ['Sim', 'Não'])
     if (ger_receita == 'Sim'):
         receita = st.number_input("Receita mensal (R$):", min_value=0, value=7400, step=1, format='%d')
@@ -235,31 +228,31 @@ elif perfil == 'Empreendedor':
           #"password": senha_founder
         } 
 
-        # profile_inserted = requests.post(global_url + 'profile', json = add_profile)
+        profile_inserted = requests.post(global_url + 'profile', json = add_profile)
         
-        # if profile_inserted:
-        add_company = {
-          "_company_cnpj": cnpj_empresa,
-          "_company_id": cnpj_empresa,
-          "_user_name" : email_founder,
-          "oficial_name" : str(nome_empresa),
-          "data_fundacao" : str(data_fundacao),
-          "data_submissao" : str(data_submissao),
-          "qtd_funcionarios" : qtd_funcionarios,
-          "industria" : industria,
-          "prod_proprio" : True if (prod_proprio == 'Sim') else False,
-          "gera_receita": True if (ger_receita == 'Sim') else False,
-          "receita": receita,
-          "num_clientes": num_clientes,
-          "cli_recor": True if (cli_recor == 'Sim') else False,
-          "cac_hist": cac_hist,
-          "curso_founder": curso_founder            
-        }
+        if profile_inserted:
+          add_company = {
+            "_company_cnpj": cnpj_empresa,
+            "_company_id": cnpj_empresa,
+            "_user_name" : email_founder,
+            "oficial_name" : str(nome_empresa),
+            "data_fundacao" : str(data_fundacao),
+            "data_submissao" : str(data_submissao),
+            "qtd_funcionarios" : qtd_funcionarios,
+            "industria" : industria,
+            "prod_proprio" : True if (prod_proprio == 'Sim') else False,
+            "gera_receita": True if (ger_receita == 'Sim') else False,
+            "receita": receita,
+            "num_clientes": num_clientes,
+            "cli_recor": True if (cli_recor == 'Sim') else False,
+            "cac_hist": cac_hist,
+            "curso_founder": curso_founder            
+          }
 
-          # company_inserted = requests.post(global_url + 'company', json = add_company)
-          # if (company_inserted.status_code == 400):
-          #   json_to_update = { "$set": add_company}
-          #   company_inserted = requests.put(global_url + 'company/id/' + str(cnpj_empresa), json = json_to_update)
+          company_inserted = requests.post(global_url + 'company', json = add_company)
+          if (company_inserted.status_code == 400):
+            json_to_update = { "$set": add_company}
+            company_inserted = requests.put(global_url + 'company/id/' + str(cnpj_empresa), json = json_to_update)
 
         st.success(f'''{nome_founder}, seu cadastro e da empresa {nome_empresa} foram concluídos com sucesso!
                     Redirecionando para a página de escolha de teses em instantes...''')
