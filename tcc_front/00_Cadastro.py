@@ -211,7 +211,7 @@ elif perfil == 'Empreendedor':
     qtd_funcionarios = st.number_input("Quantidade de funcionários:", min_value=1, value=1, step=1, format='%d')
     industria = st.text_input("À qual categoria sua indústria pertence?", placeholder="Fintech")
     prod_proprio = st.radio('Seu produto principal é próprio?', ['Sim', 'Não'])
-    cnpj_empresa = st.text_input("CNPJ da empresa candidata: ", placeholder = '12.345.678/0001-90', help='Digite apenas os números!')
+    cnpj_empresa = st.number_input("CNPJ da empresa candidata: ", min_value=1, value=1, step=1, help='Digite apenas os números!', format='%d')
     ger_receita = st.radio('Já está gerando receita?', ['Sim', 'Não'])
     if (ger_receita == 'Sim'):
         receita = st.number_input("Receita mensal (R$):", min_value=0, value=1, step=1, format='%d')
